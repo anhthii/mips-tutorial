@@ -41,13 +41,19 @@ main:
   syscall
 
 sumSquare:
+  addi $sp, $sp, -8
+  sw $ra, 4($sp)
+  sw $a1, 0($sp)
   jal square
-
+  
+  lw $a1, 0($sp)
   add $v1, $v1, $a1
-  jr $ra  
+  lw $ra, 4($sp)
+  addi $sp, $sp, 8 
+  jr $ra
 
 square:
-  mul $a1, $a1, $a1
+  mul $a1, $a0, $a0
   add $v1, $zero, $a1
 
   jr $ra
