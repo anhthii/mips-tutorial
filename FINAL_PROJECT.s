@@ -351,10 +351,12 @@ CMD8: # Sắp xếp mảng tăng dần theo Selection sort
     lw $t0, n # lay so phan tu cua mang, n 
     li $t1, 0 # khoi tao i
     sub $t3, $t0, 1 # n - 1
+
     SELECTION_SORT_OUTER_LOOP:
     beq $t1, $t3, SELECTION_SORT_OUTER_LOOP_END   # kiem tra xem i = n - 1 hay chua, neu = nhau, dung vong lap
     addi $t2, $t1, 1 # cho j = i + 1
     move $t4, $t1 # gan min_idx = i
+    
     SELECTION_SORT_INNER_LOOP:
     beq $t2, $t0, SELECTION_SORT_INNER_LOOP_END  # kiem tra j = n hay chua
     la $s0, arr # load địa chỉ của phần tử đầu tiên vào $s0
